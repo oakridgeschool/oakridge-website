@@ -1,0 +1,640 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Oakridge Middle School | Where Learning Creates Futures</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600&family=Open+Sans:wght@400;600&family=Poppins:wght@700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* CSS Reset & Variables */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        :root {
+            --forest-green: #2E7D32;
+            --sage-green: #A5D6A7;
+            --white: #FFFFFF;
+            --dark-green: #1B5E20;
+            --light-beige: #F7F5EF;
+            --text-dark: #333333;
+        }
+
+        body {
+            font-family: 'Open Sans', sans-serif;
+            background-color: var(--light-beige);
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Poppins', sans-serif;
+            color: var(--dark-green);
+        }
+
+        /* Header & Navigation */
+        header {
+            background-color: var(--forest-green);
+            color: var(--white);
+            padding: 1rem 2rem;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .logo h1 {
+            color: var(--white);
+            font-size: 1.5rem;
+        }
+        
+        .logo p {
+            font-size: 0.8rem;
+            color: var(--sage-green);
+            font-style: italic;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 1.5rem;
+        }
+
+        nav a {
+            color: var(--white);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: var(--sage-green);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(27, 94, 32, 0.8), rgba(46, 125, 50, 0.8)), url('https://images.unsplash.com/photo-1541339907198-e08756dedf3f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80') no-repeat center center/cover;
+            color: var(--white);
+            text-align: center;
+            padding: 5rem 2rem;
+        }
+
+        .hero h2 {
+            color: var(--white);
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto 2rem auto;
+        }
+
+        .btn {
+            font-family: 'Montserrat', sans-serif;
+            background-color: var(--sage-green);
+            color: var(--dark-green);
+            padding: 0.8rem 2rem;
+            border: none;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background 0.3s;
+            display: inline-block;
+        }
+
+        .btn:hover {
+            background-color: var(--white);
+        }
+
+        /* Main Content Structure */
+        .container {
+            max-width: 1200px;
+            margin: 3rem auto;
+            padding: 0 2rem;
+        }
+
+        section {
+            margin-bottom: 4rem;
+            scroll-margin-top: 100px; /* Helps with scrolling offsets */
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+
+        .section-title::after {
+            content: '';
+            width: 60px;
+            height: 4px;
+            background-color: var(--forest-green);
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        /* Values Cards */
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .value-card {
+            background-color: var(--white);
+            padding: 2rem;
+            border-radius: 8px;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            border-top: 5px solid var(--forest-green);
+        }
+
+        .value-card h3 {
+            margin-bottom: 0.5rem;
+        }
+
+        /* Two Column Layout (Welcome & News) */
+        .two-col {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 3rem;
+        }
+
+        @media (max-width: 768px) {
+            .two-col { grid-template-columns: 1fr; }
+            .header-container { flex-direction: column; gap: 1rem; text-align: center; }
+            nav ul { flex-wrap: wrap; justify-content: center; }
+        }
+
+        .welcome-box {
+            background: var(--white);
+            padding: 2.5rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+        }
+
+        .sidebar-box {
+            background: var(--forest-green);
+            color: var(--white);
+            padding: 2rem;
+            border-radius: 8px;
+        }
+
+        .sidebar-box h3 { color: var(--white); margin-bottom: 1rem; }
+        
+        .news-list { list-style: none; }
+        .news-list li {
+            padding: 0.8rem 0;
+            border-bottom: 1px solid rgba(255,255,255,0.2);
+        }
+
+        /* Teams & Tables */
+        .staff-section {
+            background-color: var(--white);
+            padding: 2.5rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            margin-bottom: 2rem;
+        }
+
+        .leadership-display {
+            display: flex;
+            gap: 2rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .leader-item {
+            background: var(--light-beige);
+            padding: 1rem 2rem;
+            border-radius: 4px;
+            border-left: 4px solid var(--forest-green);
+        }
+
+        .school-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 1rem;
+        }
+
+        .school-table th, .school-table td {
+            padding: 0.75rem;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .school-table th {
+            background-color: var(--forest-green);
+            color: var(--white);
+        }
+
+        .school-table tr:nth-child(even) {
+            background-color: var(--light-beige);
+        }
+
+        /* Specialist Teachers Grid */
+        .specialist-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .spec-card {
+            background: var(--light-beige);
+            padding: 1rem;
+            border-radius: 4px;
+            text-align: center;
+        }
+
+        /* Events Timeline */
+        .event-list {
+            display: grid;
+            gap: 1rem;
+        }
+
+        .event-item {
+            display: flex;
+            background: var(--white);
+            padding: 1rem;
+            border-radius: 8px;
+            align-items: center;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+
+        .event-date {
+            background: var(--forest-green);
+            color: var(--white);
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            font-weight: bold;
+            min-width: 120px;
+            text-align: center;
+            margin-right: 1.5rem;
+        }
+
+        /* Gallery Grid */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1rem;
+        }
+
+        .gallery-item {
+            background: var(--white);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            text-align: center;
+        }
+
+        .gallery-placeholder {
+            background: var(--sage-green);
+            height: 150px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--dark-green);
+            font-size: 2rem;
+        }
+
+        .gallery-item p {
+            padding: 0.8rem;
+            font-weight: 600;
+        }
+
+        /* Contact & Footer */
+        .contact-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            background: var(--white);
+            padding: 2.5rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+        }
+
+        @media (max-width: 768px) {
+            .contact-container { grid-template-columns: 1fr; }
+        }
+
+        footer {
+            background-color: var(--dark-green);
+            color: var(--white);
+            text-align: center;
+            padding: 2rem;
+            margin-top: 4rem;
+        }
+
+        /* Contact Form */
+        .contact-form {
+            background-color: var(--light-beige);
+            padding: 2rem;
+            border-radius: 4px;
+        }
+
+        .form-group {
+            margin-bottom: 1.2rem;
+        }
+
+        .form-group label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 0.4rem;
+            color: var(--dark-green);
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.7rem;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-family: 'Open Sans', sans-serif;
+            font-size: 0.95rem;
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        .form-status {
+            margin-top: 1rem;
+            font-weight: 600;
+            display: none;
+        }
+
+        .form-status.success { color: var(--forest-green); display: block; }
+        .form-status.error { color: #c0392b; display: block; }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="header-container">
+            <div class="logo">
+                <h1>🏫 OAKRIDGE MIDDLE SCHOOL</h1>
+                <p>Where Learning Creates Futures</p>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About Us</a></li>
+                    <li><a href="#learning">Learning</a></li>
+                    <li><a href="#student-life">Student Life</a></li>
+                    <li><a href="#events">Events</a></li>
+                    <li><a href="#gallery">Gallery</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section id="home" class="hero">
+        <h2>Welcome to Oakridge Middle School!</h2>
+        <p>At Oakridge Middle School, we inspire every learner to be respectful, confident, and ready for the future. Our caring teachers, exciting learning spaces, and strong school values help every student thrive.</p>
+        <a href="#contact" class="btn">Contact Us Today</a>
+    </section>
+
+    <div class="container">
+
+        <section>
+            <h2 class="section-title">Our OAKS Values</h2>
+            <div class="values-grid">
+                <div class="value-card">
+                    <h3>🟢 O – Opportunity</h3>
+                    <p>We embrace every opportunity to learn and grow.</p>
+                </div>
+                <div class="value-card">
+                    <h3>🟢 A – Achievement</h3>
+                    <p>We always strive to do our very best.</p>
+                </div>
+                <div class="value-card">
+                    <h3>🟢 K – Kindness</h3>
+                    <p>We treat everyone with care and respect.</p>
+                </div>
+                <div class="value-card">
+                    <h3>🟢 S – Success</h3>
+                    <p>Together, we celebrate success in every way.</p>
+                </div>
+            </div>
+        </section>
+
+        <div class="two-col">
+            <section id="about">
+                <div class="welcome-box">
+                    <h2 class="section-title" style="text-align: left; padding-bottom: 0.5rem; margin-bottom: 1.5rem;">Principal's Welcome</h2>
+                    <p><strong>Welcome to Oakridge Middle School.</strong></p>
+                    <br>
+                    <p>We are proud to be a friendly and inclusive school where every student is valued. Our goal is to provide a safe, engaging learning environment that encourages curiosity, confidence, and creativity.</p>
+                    <br>
+                    <p>We look forward to partnering with our families as we help every child achieve their full potential.</p>
+                    <br>
+                    <p><strong>Mrs Krissy Cave</strong><br><span style="color: var(--forest-green);">Principal</span></p>
+                </div>
+            </section>
+
+            <section id="news">
+                <div class="sidebar-box">
+                    <h3>📰 Latest News</h3>
+                    <ul class="news-list">
+                        <li>⭐ Welcome to all new students!</li>
+                        <li>⭐ New playground now open!</li>
+                        <li>⭐ Congratulations to our sports teams!</li>
+                        <li>⭐ Student leaders announced for 2026.</li>
+                    </ul>
+                </div>
+            </section>
+        </div>
+
+        <section id="learning">
+            <h2 class="section-title">Our Staff & Teams</h2>
+            
+            <div class="staff-section">
+                <h3>👩‍🏫 Leadership Team</h3>
+                <br>
+                <div class="leadership-display">
+                    <div class="leader-item">
+                        <strong>Principal</strong>
+                        <p>👩 Mrs Krissy Cave</p>
+                    </div>
+                    <div class="leader-item">
+                        <strong>Deputy Principal</strong>
+                        <p>👨 Dean Collins</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="staff-section">
+                <h3>📚 Year 6 Team</h3>
+                <table class="school-table">
+                    <thead>
+                        <tr>
+                            <th>Room</th>
+                            <th>Teacher</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>Room 1</td><td>Mary Leslie</td></tr>
+                        <tr><td>Room 2</td><td>Kara Wilson</td></tr>
+                        <tr><td>Room 3</td><td>Claire Jetarson</td></tr>
+                        <tr><td>Room 4</td><td>Harry Clarke</td></tr>
+                        <tr><td>Room 5</td><td>Matilda Fischer</td></tr>
+                        <tr><td>Room 6</td><td>Ganesh Kumar</td></tr>
+                        <tr><td>Room 7</td><td>Kelly Rogers</td></tr>
+                        <tr><td>Room 8</td><td>Lavya Suvper</td></tr>
+                        <tr><td>Room 9</td><td>Terry Wong</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <section id="student-life">
+            <h2 class="section-title">Student Life & Specialists</h2>
+            <div class="specialist-grid">
+                <div class="spec-card"><h4>🎵 Music</h4><p>Amelia Thompson</p></div>
+                <div class="spec-card"><h4>🎨 Art</h4><p>Jessica Miller</p></div>
+                <div class="spec-card"><h4>💻 Digital Tech</h4><p>Ethan Brooks</p></div>
+                <div class="spec-card"><h4>🏃 PE</h4><p>Liam Carter</p></div>
+                <div class="spec-card"><h4>🌏 Chinese</h4><p>Mei Chen</p></div>
+                <div class="spec-card"><h4>📚 Library</h4><p>Olivia Harris</p></div>
+            </div>
+        </section>
+
+        <section id="events">
+            <h2 class="section-title">📅 Upcoming Events</h2>
+            <div class="event-list">
+                <div class="event-item">
+                    <div class="event-date">18 August</div>
+                    <div class="event-desc">📖 Book Week</div>
+                </div>
+                <div class="event-item">
+                    <div class="event-date">22 August</div>
+                    <div class="event-desc">⚽ Winter Sports Day</div>
+                </div>
+                <div class="event-item">
+                    <div class="event-date">10 Sept</div>
+                    <div class="event-desc">🎭 School Production</div>
+                </div>
+                <div class="event-item">
+                    <div class="event-date">19 Sept</div>
+                    <div class="event-desc">🎉 Family Fun Evening</div>
+                </div>
+                <div class="event-item">
+                    <div class="event-date">5 Nov</div>
+                    <div class="event-desc">🏅 Athletics Day</div>
+                </div>
+            </div>
+        </section>
+
+        <section id="gallery">
+            <h2 class="section-title">📷 School Gallery</h2>
+            <div class="gallery-grid">
+                <div class="gallery-item"><div class="gallery-placeholder">👥</div><p>Students learning together</p></div>
+                <div class="gallery-item"><div class="gallery-placeholder">🌿</div><p>School gardens</p></div>
+                <div class="gallery-item"><div class="gallery-placeholder">🏆</div><p>Sports teams</p></div>
+                <div class="gallery-item"><div class="gallery-placeholder">📖</div><p>Library</p></div>
+                <div class="gallery-item"><div class="gallery-placeholder">🔬</div><p>Science lab</p></div>
+                <div class="gallery-item"><div class="gallery-placeholder">🎸</div><p>Music performances</p></div>
+                <div class="gallery-item"><div class="gallery-placeholder">⛺</div><p>School camp</p></div>
+                <div class="gallery-item"><div class="gallery-placeholder">🎨</div><p>Art displays</p></div>
+            </div>
+        </section>
+
+        <section id="contact">
+            <h2 class="section-title">📞 Contact Us</h2>
+            <div class="contact-container">
+                <div>
+                    <h3>Get in Touch</h3>
+                    <br>
+                    <p><strong>📍 Address:</strong><br>25 Oakridge Drive<br>Auckland 0612<br>New Zealand</p>
+                    <br>
+                    <p><strong>☎️ Phone:</strong><br>(09) 555 1234</p>
+                    <br>
+                    <p><strong>✉️ Email:</strong><br><a href="mailto:office@oakridgemiddle.school.nz" style="color: var(--forest-green);">office@oakridgemiddle.school.nz</a></p>
+                </div>
+                <div class="contact-form">
+                    <h3 style="margin-bottom: 1rem;">Send Us a Message</h3>
+                    <form id="contactForm" action="https://formspree.io/f/mlgykoay" method="POST">
+                        <div class="form-group">
+                            <label for="name">Name</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Message</label>
+                            <textarea id="message" name="message" required></textarea>
+                        </div>
+                        <button type="submit" class="btn">Send Message</button>
+                        <p id="formStatus" class="form-status"></p>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+    <footer>
+        <p>&copy; 2026 Oakridge Middle School. All Rights Reserved.</p>
+    </footer>
+
+    <script>
+        const form = document.getElementById('contactForm');
+        const status = document.getElementById('formStatus');
+
+        form.addEventListener('submit', async function (e) {
+            e.preventDefault();
+            const data = new FormData(form);
+            status.className = 'form-status';
+            status.textContent = '';
+
+            try {
+                const response = await fetch(form.action, {
+                    method: 'POST',
+                    body: data,
+                    headers: { 'Accept': 'application/json' }
+                });
+
+                if (response.ok) {
+                    status.textContent = "Thanks! Your message has been sent — we'll get back to you soon.";
+                    status.className = 'form-status success';
+                    form.reset();
+                } else {
+                    status.textContent = "Something went wrong. Please try again or email us directly.";
+                    status.className = 'form-status error';
+                }
+            } catch (err) {
+                status.textContent = "Something went wrong. Please try again or email us directly.";
+                status.className = 'form-status error';
+            }
+        });
+    </script>
+
+</body>
+</html>
